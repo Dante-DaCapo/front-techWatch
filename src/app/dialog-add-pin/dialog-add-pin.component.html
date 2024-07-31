@@ -1,0 +1,40 @@
+<mat-dialog-content>
+  @if(loadingExtraction === false && extractedData === undefined) {
+  <h2 mat-dialog-title>Enter the url:</h2>
+  <mat-form-field>
+    <mat-label>Url</mat-label>
+    <input matInput [(ngModel)]="url" />
+  </mat-form-field>
+  } @else if (loadingExtraction === true) {
+  <app-loading-spinner></app-loading-spinner>
+  } @else if (loadingExtraction === false && extractedData !== undefined) {
+  <h2 mat-dialog-title>Extracted Data :</h2>
+  <div class="flex flex-col">
+    <span>
+      <img
+        [src]="extractedData.imageUrl"
+        class="h-6/12 max-h-40 my-2 w-full rounded-md"
+      />
+    </span>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="extractedData.title" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="extractedData.description" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tags</mat-label>
+      <input matInput [(ngModel)]="extractedData.tags" />
+    </mat-form-field>
+  </div>
+  }
+</mat-dialog-content>
+<mat-dialog-actions>
+  @if(loadingExtraction === false && extractedData === undefined) {
+  <button mat-button (click)="onCheck()">Check</button>
+  } @else if (loadingExtraction === false && extractedData !== undefined) {
+  <button mat-button (click)="save()">Save Pin</button>
+  }
+</mat-dialog-actions>

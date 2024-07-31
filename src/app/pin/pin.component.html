@@ -1,0 +1,43 @@
+<div class="relative w-80 h-96 p-4 bg-transparent">
+  <div
+    class="group flex w-full h-full m-2 p-1 transition-all duration-200 bg-gradient-to-t from-slate-200 hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 hover:bg-red-700 cursor-pointer rounded-md"
+  >
+    <button
+      class="hidden group-hover:block absolute bottom-auto left-auto right-0 top-4 z-10 rounded-full border-2 bg-slate-50 border-black border-1 hover:border-slate-50 hover:bg-black hover:text-slate-50 px-2 pb-1 pt-1 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
+      (click)="deletePin()"
+    >
+      X
+    </button>
+    <div
+      class="flex flex-col w-full p-2 drop-shadow-lg backdrop-blur-md bg-white rounded-md"
+      (click)="openLinkInNewTab()"
+    >
+      <span>
+        <img [src]="pin.imageUrl" class="h-6/12 max-h-40 w-full rounded-md" />
+      </span>
+      <li
+        class="flex md:flex-col xl:flex-row justify-center items-center h-full"
+      >
+        <div class="flex flex-col">
+          <span class="text-xl pb-1">{{
+            pin.title.length < 70
+              ? pin.title
+              : pin.title.substring(0, 70) + "..."
+          }}</span>
+          <span class="text-sm pb-1">{{
+            pin.description.length < 60
+              ? pin.description
+              : pin.description.substring(0, 60) + "..."
+          }}</span>
+          <div class="flex flex-row justify-start items-center space-x-1">
+            @for (tag of pin.tags; track $index) {
+            <div class="rounded-sm bg-indigo-500 text-slate-50 text-sm px-1">
+              {{ tag }}
+            </div>
+            }
+          </div>
+        </div>
+      </li>
+    </div>
+  </div>
+</div>

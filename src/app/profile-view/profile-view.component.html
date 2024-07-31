@@ -1,0 +1,29 @@
+<div *ngIf="user$ | async as user" class="flex flex-col m-4 space-y-4">
+  <h1 class="text-xl">Profile</h1>
+
+  <h1>Username: {{ user.username }}</h1>
+
+  <h1>Email: {{ user.email }}</h1>
+
+  <app-button
+    text="Change my password"
+    (click)="changePasswordClicked = !changePasswordClicked"
+  ></app-button>
+
+  <app-update-password class="w-80" *ngIf="changePasswordClicked">
+  </app-update-password>
+
+  <div class="flex flex-row space-x-3 items-center">
+    <app-button
+      text="Delete my account"
+      (click)="deleteButtonClicked = !deleteButtonClicked"
+    ></app-button>
+    <p>Note: this action is irremediable. Be sure before doing so.</p>
+  </div>
+
+  <app-button
+    *ngIf="deleteButtonClicked"
+    text="Yes, I am sure"
+    (click)="onClickDeletionConfirmed()"
+  ></app-button>
+</div>

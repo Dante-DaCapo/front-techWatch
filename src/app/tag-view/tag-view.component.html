@@ -1,0 +1,16 @@
+<div class="overflow-auto flex flex-col space-x-5">
+  <div class="flex flex-row space-x-5 mt-6 mx-6">
+    <app-button text="Back" routerLink="/tag-view" />
+    <h1 class="w-fit my-2 text-xl">
+      {{ tagName }}
+    </h1>
+  </div>
+  <hr
+    class="my-2 h-0.5 border-t-0 text-indigo-50 bg-gradient-to-r from-indigo-500 via-purple-500"
+  />
+  <ul class="flex flex-row max-w-fit flex-wrap">
+    @for(pin of pins(); track pin.id) { @if(pin.tags.includes(tagName)) {
+    <app-pin [pin]="pin" (pinDeleted)="removePinFromList($event)"></app-pin>
+    } }
+  </ul>
+</div>

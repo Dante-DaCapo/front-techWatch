@@ -1,0 +1,13 @@
+<div class="flex flex-row space-x-3">
+  <h2>Tags:</h2>
+  <select
+    (change)="ngOnChange()"
+    [(ngModel)]="selectedTag"
+    class="bg-slate-300"
+  >
+    <option [ngValue]="{ id: 0, name: 'all' }">All</option>
+    @for(tag of tags(); track tag.id) {
+    <option [ngValue]="tag">{{ tag.name }}</option>
+    }
+  </select>
+</div>

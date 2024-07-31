@@ -1,0 +1,18 @@
+<div class="flex flex-col m-4">
+  <div class="flex flex-row space-x-5 items-center justify-between">
+    <div class="flex flex-row space-x-5 justify-start items-center">
+      @if(view === 'all') {
+      <app-button text="Change View" routerLink="/tag-view" />
+      } @else {
+      <app-button text="Change View" routerLink="/dashboard" />
+      }
+    </div>
+    <div class="flex flex-row space-x-5 justify-end items-center">
+      <app-button text="Add Pin" (click)="openDialog()" />
+      @if(view === 'all') {
+      <app-filter-tags></app-filter-tags>
+      }
+    </div>
+  </div>
+  <ng-content />
+</div>

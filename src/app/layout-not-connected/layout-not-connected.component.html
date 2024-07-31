@@ -1,0 +1,22 @@
+<div
+  class="max-h-screen h-dvh overflow-hidden bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500"
+>
+  <div class="flex flex-row justify-between h-1/6">
+    <div class="flex items-center">
+      <a class="text-slate-50 px-10 cursor-pointer" routerLink="/">
+        Tech Watch
+      </a>
+    </div>
+    <div class="flex flex-row items-center">
+      <a class="text-slate-50 mr-10 cursor-pointer" routerLink="/login"
+        >Login</a
+      >
+      <a class="text-slate-50 mr-10 cursor-pointer" routerLink="/register"
+        >Signup</a
+      >
+    </div>
+  </div>
+  <div class="h-5/6">
+    <router-outlet></router-outlet>
+  </div>
+</div>

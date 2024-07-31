@@ -1,0 +1,75 @@
+<div class="flex pt-20 justify-center min-h-screen">
+  <div
+    class="flex flex-col w-80 h-fit p-4 gap-y-5 backdrop-blur-md bg-white/30 rounded-md"
+  >
+    <h2 class="flex justify-center">USER REGISTRATION</h2>
+    <form
+      class="flex flex-col gap-y-5"
+      (ngSubmit)="onSubmit()"
+      [formGroup]="registrationForm"
+    >
+      <input
+        id="username"
+        class="border-solid border-2 border-sky-500 rounded-lg indent-2 focus:border-teal focus:outline-none focus:ring-0"
+        type="text"
+        formControlName="username"
+        placeholder="Username"
+      />
+      <input
+        id="email"
+        class="border-solid border-2 border-sky-500 rounded-lg indent-2 focus:border-teal focus:outline-none focus:ring-0"
+        type="text"
+        formControlName="email"
+        placeholder="Email"
+      />
+      <input
+        id="password"
+        class="border-solid border-2 rounded-lg indent-2 focus:border-teal focus:outline-none focus:ring-0"
+        type="password"
+        formControlName="password"
+        placeholder="password"
+        [ngClass]="
+          password?.invalid && (password?.dirty || password?.touched)
+            ? 'border-red-500'
+            : 'border-sky-500'
+        "
+      />
+      <div
+        *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+        class="text-red-500"
+      >
+        8 characters minimum
+      </div>
+      <input
+        id="passwordConfirmation"
+        class="border-solid border-2 rounded-lg indent-2 focus:border-teal focus:outline-none focus:ring-0"
+        [ngClass]="
+          !passwordAndConfirmationMatches &&
+          (passwordConfirmation?.dirty || passwordConfirmation?.touched)
+            ? 'border-red-500'
+            : 'border-sky-500'
+        "
+        type="password"
+        formControlName="passwordConfirmation"
+        placeholder="Confirm your password"
+      />
+      <div
+        *ngIf="
+          !passwordAndConfirmationMatches &&
+          (passwordConfirmation?.dirty || passwordConfirmation?.touched)
+        "
+        class="text-red-500"
+      >
+        Passwords are not matching
+      </div>
+
+      <button
+        [disabled]="!registrationForm.valid"
+        class="rounded-full bg-sky-500"
+        type="submit"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+</div>
